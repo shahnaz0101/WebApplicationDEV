@@ -1,6 +1,5 @@
 using Microsoft.AspNetCore.Mvc;
-using System.Diagnostics.Metrics;
-using System.Runtime.InteropServices;
+
 
 namespace WebApplicationDEV.Controllers
 {
@@ -8,31 +7,31 @@ namespace WebApplicationDEV.Controllers
     [Route("[controller]")]
     public class SorterController : ControllerBase
     {
-       public class SortingString
-        {
+        
+       public SorterController()
+        { }
             [HttpPost("StringSorter")]
-            public static void Main(string[] args)
+            public void GetSortString(string[] valuee)
             {
                 string[] values = { "Samaya", "Vugar", "Novruz", "Narmina", "Edward" };
 
                 foreach (string value in values)
                 {
-                    Console.Write(value + ' ');
+                    return  ;
                 }
                 Array.Sort(values);
-                Console.WriteLine("Sorted; ");
+                
                 foreach (string value in values)
                 {
-                    Console.Write(value + ' ');
+                   return ;
                 }
-                Console.WriteLine();
+                
             }
 
-        }
-        public class Program
-        {
+
+
             [HttpPost("IntSorter")]
-            public static void GetSort(string[] array)
+            public void GetSort(string[] array)
             {
 
                 int[] Sort(int[] unsorted)
@@ -59,38 +58,36 @@ namespace WebApplicationDEV.Controllers
 
 
                 }
-            }
-
-            public class Sorter
-            {
-                [HttpPost("CharSorter")]
-            public char[] Sort(char[] unsorted)
-            {
-                char[] longsortedarray = new char[unsorted.Length];
-                for (int i = 0; i < unsorted.Length - 1; i++)
-
-                {
-                    for (int j = 0; j < unsorted.Length - i - 1; j++)
-                    {
-                        int l = (int)unsorted[j];
-                        int n = (int)unsorted[j + 1];
-
-                        if (l > n)
-                        {
-                            char temp = longsortedarray[j];
-                            longsortedarray[j] = longsortedarray[j + 1];
-                            longsortedarray[j + 1] = temp;
-                        }
-                    }
-
-                }
-                return longsortedarray;
-            }
-
-            }
-
-
-
         }
+
+
+
+        [HttpPost("CharSorter")]
+        public static char[] Sort(char[] unsorted)
+        {
+            char[] longsortedarray = new char[unsorted.Length];
+            for (int i = 0; i < unsorted.Length - 1; i++)
+
+            {
+                for (int j = 0; j < unsorted.Length - i - 1; j++)
+                {
+                    int l = (int)unsorted[j];
+                    int n = (int)unsorted[j + 1];
+
+                    if (l > n)
+                    {
+                        char temp = longsortedarray[j];
+                        longsortedarray[j] = longsortedarray[j + 1];
+                        longsortedarray[j + 1] = temp;
+                    }
+                }
+
+            }
+            return longsortedarray;
+        }
+
+
     }
 }
+    
+
